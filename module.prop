@@ -1,0 +1,7 @@
+id=pgurd
+name=PGurd
+version=0.01
+versionCode=01
+author=BCK
+description=为不稳定的模块提供守护进程
+updateJson=

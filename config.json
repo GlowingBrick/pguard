@@ -1,0 +1,35 @@
+{
+    "scan_interval": 5,
+    "processes": [
+        {
+            "name": "ykSwitcher",
+            "cwd": "/data/adb/modules/ykSwitcher",
+            "cmdline": "/data/adb/modules/ykSwitcher/ykSwitcher > /data/adb/modules/ykSwitcher/log.log &",
+            "autorun": false
+        },
+        {
+            "name": "YukiCpuScheduler",
+            "cwd": "/data/user/0/com.yuki.controller/files",
+            "cmdline": "taskset 03 /data/user/0/com.yuki.controller/files/YukiCpuScheduler /data/user/0/com.yuki.controller/files &",
+            "autorun": true
+        },
+        {
+            "name": "Frozen",
+            "cwd": "/data/adb/modules/Frozen",
+            "cmdline": "taskset 03 /data/adb/modules/Frozen/Frozen",
+            "autorun": false
+        },
+        {
+            "name": "fas-rs",
+            "cwd": "/data/adb/modules/fas_rs",
+            "cmdline": "RUST_BACKTRACE=1 taskset 03 /data/adb/modules/fas_rs/fas-rs run /data/adb/modules/fas_rs/games.toml > /sdcard/Android/fas-rs/fas_log.txt &",
+            "autorun": false
+        },
+        {
+            "name": "CuDaemon",
+            "cwd": "/data/adb/modules/ct_module",
+            "cmdline": "sh /data/adb/modules/ct_module/service.sh",
+            "autorun": false
+        }
+    ]
+}
