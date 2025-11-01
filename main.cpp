@@ -74,7 +74,6 @@ private:
     std::string cmdline;
     bool guarding;
     std::vector<pid_t> pids;
-    int8_t raisetimes;
     // 使用pidof命令获取进程PID
     std::vector<pid_t> getPidsByName(const std::string& processName) {
         std::vector<pid_t> result;
@@ -160,7 +159,7 @@ private:
 
             // 使用shell执行命令
             execl(SHELL, "sh", "-c", cmdline.c_str(), (char*)NULL);
-            
+            LOGI(cmdline.c_str());
             // 如果执行到这里，说明exec失败
             LOGE("Failed to execute shell command: %s for %s", 
                  cmdline.c_str(), name.c_str());
@@ -182,17 +181,13 @@ private:
 public:
     ProcessGuard(const std::string& n, const std::string& wd, 
                  const std::string& cmd, bool autoRun)
-        : name(n), cwd(wd), cmdline(cmd), guarding(autoRun) ,raisetimes(0)
+        : name(n), cwd(wd), cmdline(cmd), guarding(autoRun)
     {
         LOGD("Created guard for %s (autorun: %s)", 
              n.c_str(), guarding ? "true" : "false");
     }
     
     void guard() {
-        if(UNLIKELY(raisetimes<0)){
-            ++raisetimes;
-            return;
-        }
         // 检查已知PID是否存活
         bool anyDead = false;
         for (auto it = pids.begin(); it != pids.end();) {
@@ -216,23 +211,16 @@ public:
                     guarding = true;
                     LOGI("Started guarding process: %s", name.c_str());
                 }
-                raisetimes=0;
                 return;
             }
             
             // 如果没有找到进程且应该守护，则启动进程
             if (LIKELY(guarding)) {
-                ++raisetimes;
-                if(raisetimes>=5)
-                {
-                    raisetimes=-10;
-                }
                 LOGI("Process %s not found, restarting...", name.c_str());
                 startProcess();
             }
         } 
         else {
-            raisetimes=0;
             if (UNLIKELY(anyDead)) {
                 LOGD("Process %s: %zu instances remaining", name.c_str(), pids.size());
             }

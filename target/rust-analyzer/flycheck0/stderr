@@ -1,0 +1,9 @@
+warning: `package.edition` is unspecified, defaulting to `2024`
+   0.009599042s  INFO prepare_target{force=false package_id=mod- v0.0.0 (/mnt/drive-d/code/fas-rs/src/framework/scheduler/looper/mod.rs) target="mod-"}: cargo::core::compiler::fingerprint: fingerprint dirty for mod- v0.0.0 (/mnt/drive-d/code/fas-rs/src/framework/scheduler/looper/mod.rs)/Check { test: false }/TargetInner { name: "mod-", doc: true, ..: with_path("/mnt/drive-d/code/fas-rs/src/framework/scheduler/looper/mod.rs", Edition2024) }
+   0.009616534s  INFO prepare_target{force=false package_id=mod- v0.0.0 (/mnt/drive-d/code/fas-rs/src/framework/scheduler/looper/mod.rs) target="mod-"}: cargo::core::compiler::fingerprint:     dirty: FsStatusOutdated(StaleItem(FailedToReadMetadata("/home/brick/.cargo/target/0a/d2518ab69dbe4a/debug/deps/libmod_-d877dbc83613a805.rmeta")))
+   0.009839640s  INFO prepare_target{force=false package_id=mod- v0.0.0 (/mnt/drive-d/code/fas-rs/src/framework/scheduler/looper/mod.rs) target="mod-"}: cargo::core::compiler::fingerprint: fingerprint dirty for mod- v0.0.0 (/mnt/drive-d/code/fas-rs/src/framework/scheduler/looper/mod.rs)/Check { test: true }/TargetInner { name: "mod-", doc: true, ..: with_path("/mnt/drive-d/code/fas-rs/src/framework/scheduler/looper/mod.rs", Edition2024) }
+   0.009846060s  INFO prepare_target{force=false package_id=mod- v0.0.0 (/mnt/drive-d/code/fas-rs/src/framework/scheduler/looper/mod.rs) target="mod-"}: cargo::core::compiler::fingerprint:     dirty: FsStatusOutdated(StaleItem(FailedToReadMetadata("/home/brick/.cargo/target/0a/d2518ab69dbe4a/debug/deps/libmod_-e747383e8e5d0c60.rmeta")))
+    Checking mod- v0.0.0 (/mnt/drive-d/code/fas-rs/src/framework/scheduler/looper/mod.rs)
+error: could not compile `mod-` (bin "mod-" test) due to 24 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `mod-` (bin "mod-") due to 25 previous errors

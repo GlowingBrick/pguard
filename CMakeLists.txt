@@ -30,6 +30,10 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O3 -fno-rtti")
 # 链接库
 target_link_libraries(pguard PRIVATE log)
 
+target_link_options(pguard PRIVATE
+    "-static-libstdc++"  # 静态链接 libc++
+)
+
 # 查找zip程序
 find_program(ZIP_EXECUTABLE zip)
 
