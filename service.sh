@@ -20,5 +20,5 @@ wait_until_login
 MODDIR=${0%/*}
 cd $MODDIR
 chmod +x pguard
-nohup taskset 03 ${MODDIR}/pguard >${MODDIR}/log.log 2>&1 &
+taskset 03 ${MODDIR}/pguard
 

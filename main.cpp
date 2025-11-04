@@ -20,7 +20,7 @@
 using json = nlohmann::json;
 
 // 定义日志标签
-#define LOG_TAG "ProcessGuard"
+#define LOG_TAG "PGuard"
 
 // 跨平台日志宏定义
 #ifdef __ANDROID__
@@ -229,6 +229,16 @@ public:
 };
 
 int main() {
+    if (fork() > 0) {
+        exit(0);
+    }
+
+    setsid();
+
+    if (fork() > 0) {
+        exit(0);  // 孤儿模拟器.jpg
+    }
+
     LOGI("Process guard starting...");
     
     // 读取配置文件
